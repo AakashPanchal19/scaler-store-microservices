@@ -1,0 +1,39 @@
+# Compiled class files & build artifacts
+target/
+**/target/
+*.class
+*.jar
+!/.mvn/wrapper/maven-wrapper.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Portable build tools & local environments
+.tools/
+.mvn/timing.properties
+
+# Log files
+*.log
+logs/
+
+# IDE & Editor files
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.project
+.classpath
+
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Python / scratch
+__pycache__/
+*.pyc
+*.pyo
