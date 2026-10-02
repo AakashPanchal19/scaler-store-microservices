@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCALER STORE — Premium Tech &amp; Lifestyle Goods</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <div class="top-bar-msg">
+        <span>COMPLIMENTARY EXPRESS DELIVERY ON ORDERS OVER $99</span>
+        <span>•</span>
+        <strong>30-DAY HASSLE-FREE RETURNS</strong>
+      </div>
+      <div class="top-bar-links">
+        <a href="javascript:void(0)" onclick="openOrderTrackModal()">Track Order</a>
+        <a href="javascript:void(0)">Support</a>
+        <span>USD ($)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Site Header -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <!-- Brand Logo -->
+      <a href="javascript:void(0)" class="brand-logo" onclick="filterCategory(null)">
+        <div class="brand-emblem">S</div>
+        <span>SCALER STORE</span>
+      </a>
+
+      <!-- Search Input Bar -->
+      <div class="search-form">
+        <div class="search-input-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search by product name, category, or SKU..." oninput="handleSearchInput(event)">
+        </div>
+      </div>
+
+      <!-- Header Action Items -->
+      <div class="nav-actions-group">
+        <!-- Order Tracking -->
+        <button class="action-btn" onclick="openOrderTrackModal()" title="Track Your Order">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="1" y="3" width="15" height="13"></rect>
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+          </svg>
+          <span>Track</span>
+        </button>
+
+        <!-- Notifications -->
+        <button class="action-btn-icon" onclick="openNotificationsModal()" title="Order & Account Updates">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+          <span class="action-badge" id="notifBadge">0</span>
+        </button>
+
+        <!-- Shopping Bag / Cart -->
+        <button class="action-btn-icon" onclick="openCartDrawer()" title="Shopping Bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="action-badge" id="cartBadge">0</span>
+        </button>
+
+        <!-- Auth / Profile -->
+        <div id="authContainer">
+          <button class="action-btn" onclick="openAuthModal()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>Sign In</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secondary Category Sub-Nav -->
+    <nav class="sub-nav">
+      <div class="sub-nav-inner" id="subCategoryBar">
+        <button class="sub-nav-item active" onclick="filterCategory(null, this)">All Collections</button>
+        <button class="sub-nav-item" onclick="filterCategory(1, this)">Electronics</button>
+        <button class="sub-nav-item" onclick="filterCategory(2, this)">Footwear &amp; Apparel</button>
+        <button class="sub-nav-item" onclick="filterCategory(3, this)">Home &amp; Kitchen</button>
+        <button class="sub-nav-item" onclick="filterCategory(4, this)">Books &amp; Media</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Editorial Commercial Hero -->
+  <section class="store-hero">
+    <div class="hero-layout">
+      <div>
+        <div class="hero-pill-tag">Summer 2026 Collection</div>
+        <h1 class="hero-headline">Engineered for Precision. Designed for Living.</h1>
+        <p class="hero-desc">
+          High-performance computing hardware, studio acoustics, and workspace essentials curated for modern engineers and designers.
+        </p>
+        <div class="hero-cta-group">
+          <button class="btn-hero-primary" onclick="scrollToCatalog()">
+            <span>Shop New In</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+          <button class="btn-hero-secondary" onclick="filterCategory(1)">
+            Explore Electronics
+          </button>
+        </div>
+      </div>
+
+      <!-- Spotlight Showcase Card -->
+      <div class="hero-spotlight-card">
+        <div class="spotlight-badge">Featured Spotlight</div>
+        <div class="spotlight-title">Apple MacBook Pro 16" M3 Max</div>
+        <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;">
+          36GB Unified Memory, 1TB SSD Storage, Liquid Retina XDR display in Space Black.
+        </p>
+        <div class="spotlight-meta">
+          <div>
+            <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Special Offer</div>
+            <div class="spotlight-price">$2,499.00</div>
+          </div>
+          <button class="btn-hero-primary" style="padding: 0.5rem 1.15rem; font-size: 0.85rem;" onclick="addToCart(1, 'Apple MacBook Pro 16-inch M3 Max', 'SKU-MACBOOK-M3', 2499.00)">
+            Quick Add
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Proposition Trust Strip -->
+  <section class="trust-strip">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <div class="trust-icon-box">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="1" y="3" width="15" height="13"></rect>
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+          </svg>
+        </div>
+        <div>
+          <div class="trust-title">Free Express Shipping</div>
+          <div class="trust-sub">On orders exceeding $99</div>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon-box">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="trust-title">Encrypted Checkout</div>
+          <div class="trust-sub">256-bit SSL transaction security</div>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon-box">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+        </div>
+        <div>
+          <div class="trust-title">Same-Day Dispatch</div>
+          <div class="trust-sub">Order before 2:00 PM EST</div>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon-box">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="1 4 1 10 7 10"></polyline>
+            <polyline points="23 20 23 14 17 14"></polyline>
+            <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="trust-title">30-Day Free Returns</div>
+          <div class="trust-sub">Instant store credit or refund</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Storefront Catalog Section -->
+  <main class="catalog-section" id="catalogSection">
+    <div class="catalog-layout">
+      <!-- Left Filter Sidebar -->
+      <aside class="sidebar-panel">
+        <div class="filter-block">
+          <div class="filter-title">Categories</div>
+          <ul class="filter-list" id="sidebarCategoryList">
+            <li>
+              <button class="filter-btn active" onclick="filterCategory(null, this)">
+                <span>All Products</span>
+                <span class="filter-count">6</span>
+              </button>
+            </li>
+            <li>
+              <button class="filter-btn" onclick="filterCategory(1, this)">
+                <span>Electronics</span>
+                <span class="filter-count">4</span>
+              </button>
+            </li>
+            <li>
+              <button class="filter-btn" onclick="filterCategory(2, this)">
+                <span>Footwear &amp; Apparel</span>
+                <span class="filter-count">1</span>
+              </button>
+            </li>
+            <li>
+              <button class="filter-btn" onclick="filterCategory(3, this)">
+                <span>Home &amp; Kitchen</span>
+                <span class="filter-count">0</span>
+              </button>
+            </li>
+            <li>
+              <button class="filter-btn" onclick="filterCategory(4, this)">
+                <span>Books &amp; Media</span>
+                <span class="filter-count">1</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="filter-block">
+          <div class="filter-title">Price Range</div>
+          <div class="price-pill-group">
+            <label class="price-pill">
+              <input type="radio" name="priceFilter" value="all" checked onchange="applyPriceFilter('all')">
+              <span>All Prices</span>
+            </label>
+            <label class="price-pill">
+              <input type="radio" name="priceFilter" value="under-100" onchange="applyPriceFilter('under-100')">
+              <span>Under $100</span>
+            </label>
+            <label class="price-pill">
+              <input type="radio" name="priceFilter" value="100-500" onchange="applyPriceFilter('100-500')">
+              <span>$100 to $500</span>
+            </label>
+            <label class="price-pill">
+              <input type="radio" name="priceFilter" value="over-500" onchange="applyPriceFilter('over-500')">
+              <span>Over $500</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="filter-block">
+          <div class="filter-title">Availability</div>
+          <label style="display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; color: var(--slate-700); cursor: pointer;">
+            <input type="checkbox" id="inStockOnlyCheckbox" checked onchange="toggleInStockFilter(this)">
+            <span>In Stock Only</span>
+          </label>
+        </div>
+      </aside>
+
+      <!-- Right Main Catalog -->
+      <div>
+        <!-- Catalog Toolbar Header -->
+        <div class="catalog-toolbar">
+          <div>
+            <h2 class="catalog-heading" id="catalogHeading">All Products</h2>
+            <div class="catalog-count-note" id="catalogCountNote">Showing 6 curated items</div>
+          </div>
+
+          <div class="sort-select-wrap">
+            <span>Sort by:</span>
+            <select class="sort-select" id="sortSelect" onchange="handleSortChange(this.value)">
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Alphabetical</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid" id="productsGrid">
+          <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; color: var(--slate-400);">
+            Loading products from catalog service...
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Slide-Over Shopping Bag Drawer (Industry Standard) -->
+  <div class="drawer-backdrop" id="cartDrawerBackdrop" onclick="closeCartDrawer(event)">
+    <div class="cart-drawer" onclick="event.stopPropagation()">
+      <div class="drawer-header">
+        <div class="drawer-title">Shopping Bag (<span id="cartDrawerCount">0</span>)</div>
+        <button class="btn-drawer-close" onclick="closeCartDrawer(event)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Free Shipping Meter -->
+      <div class="shipping-meter-wrap">
+        <div class="shipping-meter-text" id="shippingMeterText">Add $99.00 more for Free Shipping</div>
+        <div class="shipping-meter-bar">
+          <div class="shipping-meter-fill" id="shippingMeterFill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Cart Line Items -->
+      <div class="drawer-body" id="drawerCartItems">
+        <div class="drawer-empty-state">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+          </svg>
+          <p style="font-weight: 600; font-size: 1rem; margin-bottom: 0.25rem;">Your bag is currently empty</p>
+          <p style="font-size: 0.85rem;">Discover our latest tech and lifestyle arrivals.</p>
+        </div>
+      </div>
+
+      <!-- Drawer Footer Summary -->
+      <div class="drawer-footer" id="drawerFooter" style="display: none;">
+        <div class="drawer-subtotal-row">
+          <span>Subtotal</span>
+          <span id="drawerSubtotal">$0.00</span>
+        </div>
+        <div class="drawer-note">Taxes and shipping calculated at checkout.</div>
+        <button class="btn-checkout-primary" onclick="openCheckoutModal()">
+          <span>Proceed to Checkout</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sign In / Register Modal -->
+  <div class="modal-backdrop" id="authModal">
+    <div class="modal-window">
+      <div class="modal-head">
+        <div class="modal-title" id="authModalTitle">Sign In to Your Account</div>
+        <button class="btn-drawer-close" onclick="closeModal('authModal')">&times;</button>
+      </div>
+
+      <div class="modal-content-area">
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem;">
+          <button class="btn-form-submit" id="loginTabBtn" style="flex: 1; margin: 0; background-color: var(--slate-950);" onclick="switchAuthTab('login')">Sign In</button>
+          <button class="btn-form-submit" id="registerTabBtn" style="flex: 1; margin: 0; background-color: transparent; color: var(--slate-600); border: 1px solid var(--border-light);" onclick="switchAuthTab('register')">Create Account</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" onsubmit="handleLogin(event)" class="form-grid">
+          <div>
+            <label class="field-label">Email Address</label>
+            <input type="email" id="loginEmail" class="field-input" value="student@scalerstore.com" required>
+          </div>
+          <div>
+            <label class="field-label">Password</label>
+            <input type="password" id="loginPassword" class="field-input" value="Password@123" required>
+          </div>
+          <button type="submit" class="btn-form-submit">Sign In</button>
+        </form>
+
+        <!-- Register Form -->
+        <form id="registerForm" style="display: none;" onsubmit="handleRegister(event)" class="form-grid">
+          <div>
+            <label class="field-label">Full Name</label>
+            <input type="text" id="regName" class="field-input" placeholder="Aakash Panchal" required>
+          </div>
+          <div>
+            <label class="field-label">Email Address</label>
+            <input type="email" id="regEmail" class="field-input" placeholder="aakash@scalerstore.com" required>
+          </div>
+          <div>
+            <label class="field-label">Password</label>
+            <input type="password" id="regPassword" class="field-input" placeholder="••••••••" required>
+          </div>
+          <button type="submit" class="btn-form-submit">Create Account</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div class="modal-backdrop" id="checkoutModal">
+    <div class="modal-window">
+      <div class="modal-head">
+        <div class="modal-title">Complete Your Order</div>
+        <button class="btn-drawer-close" onclick="closeModal('checkoutModal')">&times;</button>
+      </div>
+
+      <div class="modal-content-area">
+        <form onsubmit="handleCheckout(event)" class="form-grid">
+          <div style="background-color: var(--slate-50); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: 700; font-size: 0.95rem;">Order Total Due:</span>
+            <span style="font-weight: 800; font-size: 1.25rem; color: var(--slate-950);">$<span id="checkoutAmountText">0.00</span></span>
+          </div>
+
+          <div>
+            <label class="field-label">Street Address</label>
+            <input type="text" id="shipStreet" class="field-input" value="100 Tech Park Way" required>
+          </div>
+
+          <div class="form-row-2">
+            <div>
+              <label class="field-label">City</label>
+              <input type="text" id="shipCity" class="field-input" value="Bengaluru" required>
+            </div>
+            <div>
+              <label class="field-label">State / Province</label>
+              <input type="text" id="shipState" class="field-input" value="Karnataka" required>
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div>
+              <label class="field-label">Postal / ZIP Code</label>
+              <input type="text" id="shipZip" class="field-input" value="560001" required>
+            </div>
+            <div>
+              <label class="field-label">Payment Method</label>
+              <select id="payMethod" class="field-select">
+                <option value="CREDIT_CARD">Credit / Debit Card</option>
+                <option value="UPI">UPI / Instant Transfer</option>
+                <option value="PAYPAL">PayPal</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" id="paySubmitBtn" class="btn-form-submit">Authorize &amp; Place Order</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Confirmation Modal -->
+  <div class="modal-backdrop" id="orderConfirmModal">
+    <div class="modal-window" style="text-align: center;">
+      <div class="modal-content-area" style="padding: 2.5rem 2rem;">
+        <div style="width: 56px; height: 56px; background-color: var(--success-bg); color: var(--success); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem auto;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem;">Order Confirmed</h3>
+        <p style="color: var(--slate-600); font-size: 0.95rem; margin-bottom: 1.5rem;">
+          Thank you for shopping with Scaler Store. Your order has been placed and confirmed.
+        </p>
+        <div style="background-color: var(--slate-50); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.75rem;">
+          <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--slate-500); font-weight: 700; margin-bottom: 0.25rem;">Order Reference</div>
+          <div style="font-size: 1.15rem; font-weight: 800; color: var(--slate-950);" id="confirmedOrderNumber">ORD-20261114-XXXXXX</div>
+        </div>
+        <button class="btn-form-submit" onclick="closeModal('orderConfirmModal')">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Tracking Modal -->
+  <div class="modal-backdrop" id="orderTrackModal">
+    <div class="modal-window">
+      <div class="modal-head">
+        <div class="modal-title">Track Your Shipment</div>
+        <button class="btn-drawer-close" onclick="closeModal('orderTrackModal')">&times;</button>
+      </div>
+      <div class="modal-content-area">
+        <form onsubmit="trackOrder(event)" class="form-grid">
+          <div>
+            <label class="field-label">Order Number</label>
+            <input type="text" id="trackInput" class="field-input" placeholder="e.g. ORD-20261114-123456" required>
+          </div>
+          <button type="submit" class="btn-form-submit">Track Shipment</button>
+        </form>
+
+        <div id="trackResult" style="display: none; margin-top: 1.5rem;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Drawer Modal -->
+  <div class="modal-backdrop" id="notifModal">
+    <div class="modal-window">
+      <div class="modal-head">
+        <div class="modal-title">Order &amp; Account Activity</div>
+        <button class="btn-drawer-close" onclick="closeModal('notifModal')">&times;</button>
+      </div>
+      <div class="modal-content-area" id="notifListContainer" style="max-height: 400px; overflow-y: auto;">
+        <p style="text-align: center; color: var(--slate-400); padding: 2rem;">No recent notifications recorded.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Production E-Commerce Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <!-- Brand Info -->
+        <div>
+          <div class="brand-logo" style="color: #fff; margin-bottom: 1rem;">
+            <div class="brand-emblem" style="background-color: #fff; color: var(--slate-950);">S</div>
+            <span>SCALER STORE</span>
+          </div>
+          <p style="font-size: 0.875rem; line-height: 1.6; max-width: 320px; color: var(--slate-400); margin-bottom: 1.5rem;">
+            Precision computing hardware, acoustic monitoring, and ergonomic tools for high-performance software engineering teams.
+          </p>
+          <div style="font-size: 0.8rem; color: var(--slate-500);">
+            Designed and built for Scaler Neovarsity by <strong>Aakash Panchal</strong>.
+          </div>
+        </div>
+
+        <!-- Collections -->
+        <div>
+          <div class="footer-col-title">Collections</div>
+          <ul class="footer-nav-list">
+            <li><a href="javascript:void(0)" onclick="filterCategory(1)">Electronics</a></li>
+            <li><a href="javascript:void(0)" onclick="filterCategory(2)">Footwear &amp; Apparel</a></li>
+            <li><a href="javascript:void(0)" onclick="filterCategory(3)">Home &amp; Kitchen</a></li>
+            <li><a href="javascript:void(0)" onclick="filterCategory(4)">Books &amp; Media</a></li>
+            <li><a href="javascript:void(0)">Featured Drops</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Care -->
+        <div>
+          <div class="footer-col-title">Customer Care</div>
+          <ul class="footer-nav-list">
+            <li><a href="javascript:void(0)" onclick="openOrderTrackModal()">Track Shipment</a></li>
+            <li><a href="javascript:void(0)">Shipping &amp; Delivery</a></li>
+            <li><a href="javascript:void(0)">Returns &amp; Exchanges</a></li>
+            <li><a href="javascript:void(0)">Warranty Claims</a></li>
+            <li><a href="javascript:void(0)">Help &amp; FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Security & Legal -->
+        <div>
+          <div class="footer-col-title">Platform</div>
+          <ul class="footer-nav-list">
+            <li><a href="javascript:void(0)">Privacy Policy</a></li>
+            <li><a href="javascript:void(0)">Terms of Service</a></li>
+            <li><a href="javascript:void(0)">API Documentation</a></li>
+            <li><a href="javascript:void(0)">System Status</a></li>
+            <li><a href="javascript:void(0)">Security Whitepaper</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <div>&copy; 2026 Scaler Store, Inc. All rights reserved.</div>
+        <div class="payment-badges-row">
+          <span>VISA</span>
+          <span>•</span>
+          <span>MASTERCARD</span>
+          <span>•</span>
+          <span>AMERICAN EXPRESS</span>
+          <span>•</span>
+          <span>APPLE PAY</span>
+          <span>•</span>
+          <span>UPI</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast-notice" id="toast">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    <span id="toastMsg">Notification message</span>
+  </div>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
